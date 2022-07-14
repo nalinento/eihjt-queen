@@ -1,0 +1,242 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Test {
+    public static void main(String[] args) {
+        for (int a = 1; a < 9; a++) {
+            for (int b = 1; b < 9; b++) {
+                for (int c = 1; c < 9; c++) {
+                    for (int d = 1; d < 9; d++) {
+                        for (int e = 1; e < 9; e++) {
+                            for (int f = 1; f < 9; f++) {
+                                for (int g = 1; g < 9; g++) {
+                                    for (int h = 1; h < 9; h++) {
+                                        List<Integer> list = Arrays.asList(a,b,c,d,e,f,g,h);
+                                        mainList(list);
+
+                                    }
+
+                                }
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+    }
+
+    static void mainList(List<Integer> list) {
+        int k = 0;
+        int c = 0;
+        int p = 0;
+        int j = 8;
+        int h = 0;
+        boolean s = false;
+        boolean z = false;
+        boolean i = false;
+        List<Boolean> fb = new ArrayList<>();
+        List<Boolean> nb = new ArrayList<>();
+        List<Boolean> ua = new ArrayList<>();
+        for (int a = 1; a < list.size(); a++) {
+            k = a;
+
+            if (a > list.get(p)) {
+                c = a;
+
+            } else {
+                c = list.get(p);
+            }
+            p++;
+
+          s = feed(c, list, k);
+            fb.add(s);
+
+        }
+        for (int f = 0; f < list.size(); f++) {
+
+            if (j < list.get(f)) {
+                h = j;
+
+            } else {
+                h = list.get(f);
+            }
+
+
+          z=  seen(h, list, f);
+
+            nb.add(z);
+
+            j--;
+
+            i = clean(list, f);
+            ua.add(i);
+
+
+        }
+        boolean nhOne = cou(fb);
+        boolean nhTwo = couOne(nb);
+        boolean nhThree = couTwo(ua);
+
+
+        if (nhOne && nhTwo && nhThree) {
+            for (int a = 0; a < list.size(); a++) {
+                int b = list.get(a);
+                b--;
+                int d = list.get(a);
+                d++;
+                for (int ca = 0; ca < b; ca++) {
+                    System.out.print("*");
+                }
+                System.out.print("[");
+                System.out.print("*");
+                System.out.print("]");
+
+                for (int f = d; f <= list.size(); f++) {
+                    System.out.print("*");
+                }
+                System.out.println();
+
+            }
+            System.out.println("-----------------------");
+        }
+
+    }
+
+    static boolean cou(List<Boolean> b) {
+        boolean s = true;
+        for (int a = 0; a < b.size(); a++) {
+            if (!(b.get(a))) {
+                s = b.get(a);
+
+            }
+        }
+        return s;
+    }
+
+    static boolean couOne(List<Boolean> b) {
+        boolean s = true;
+        for (int a = 0; a < b.size(); a++) {
+            if (!(b.get(a))) {
+                s = b.get(a);
+
+            }
+        }
+        return s;
+    }
+
+    static boolean couTwo(List<Boolean> b) {
+        boolean s = true;
+        for (int a = 0; a < b.size(); a++) {
+            if (!(b.get(a))) {
+                s = b.get(a);
+
+            }
+        }
+        return s;
+    }
+
+    private static boolean clean(List<Integer> h, int ba) {
+        int c = ba;
+        c++;
+        int s = 0;
+        int v = 1;
+        for (int a = c; a < h.size(); a++) {
+            if (h.get(ba) == h.get(a)) {
+
+
+                return false;
+            }
+
+        }
+
+        return true;
+    }
+
+    private static boolean feed(int b, List<Integer> h, int d) {
+        int w = d;
+        w--;
+
+        boolean q;
+        List<Integer> ab = new ArrayList<>();
+
+        int c = h.get(w);
+        c++;
+        for (int a = b; a < 8; a++) {
+
+
+            ab.add(c);
+            c++;
+            w++;
+
+        }
+
+
+        q = fog(ab, h, d);
+        return q;
+
+    }
+
+    static boolean seen(int b, List<Integer> h, int d) {
+        int c = h.get(d);
+        int o = b;
+        c--;
+        b--;
+        int g = c;
+        c--;
+        boolean q;
+        List<Integer> list = new ArrayList<>();
+
+        for (int a = 0; a < b; a++) {
+
+
+            list.add(g);
+
+            c--;
+            g--;
+
+
+        }
+        q = leftCheck(list, h, d);
+
+        return q;
+    }
+
+    private static boolean leftCheck(List<Integer> list, List<Integer> h, int e) {
+
+        int b = e;
+        b++;
+        for (int a = 0; a < list.size(); a++) {
+            if (list.get(a) == h.get(b)) {
+                return false;
+            }
+            b++;
+        }
+        return true;
+    }
+
+    static boolean fog(List<Integer> a, List<Integer> h, int f) {
+        int e = f;
+        int w = e;
+
+
+        for (int c = 0; c < a.size(); c++) {
+            int j = c;
+            if (a.get(j) == h.get(w)) {
+                return false;
+            }
+
+            w++;
+            j++;
+        }
+
+        return true;
+
+
+    }
+}
